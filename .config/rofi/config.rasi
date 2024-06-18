@@ -1,0 +1,123 @@
+/*
+ * ==================================================================================
+ * FZF-inspiriertes Rofi-Theme (Fokus auf Lesbarkeit)
+ * ==================================================================================
+ */
+
+
+configuration {
+    /* Deine persönlichen Einstellungen bleiben gleich */
+    modi: "run,window,combi";
+    show-icons: false;
+    terminal: "alacritty";
+    drun-display-format: "{name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-combi: "";
+    display-run: "";
+    display-window: "";
+    sidebar-mode: false;
+
+    /* Vim-ähnliche Keybindings */
+    kb-remove-to-eol: "Control+Shift+y";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+}
+
+@theme "/dev/null"
+
+/*
+ * ==================================================================================
+ * Globales Farbschema und Schriftart (aus alacritty.toml)
+ * ==================================================================================
+ */
+* {
+    /* Farben aus deinem Alacritty Nord Theme */
+    bg:           #21252B; /* primary.background (dunkler gemacht) */
+    fg:           #a5abb6; /* dim_foreground */
+    selected-fg:  #e5e9f0; /* normal.white */
+    red:          #bf616a; /* normal.red */
+    yellow:       #ebcb8b; /* normal.yellow */
+    border-col:   #4c566a; /* selection.background */
+
+    /* Grundeinstellungen */
+    background-color:  transparent;
+    text-color:        @fg;
+    font:              "monospace 13";
+    border:            0;
+    margin:            0;
+    padding:           0;
+    spacing:           0;
+
+    /* Markiert den übereinstimmenden Text in Gelb */
+    highlight:          @yellow;
+}
+
+/*
+ * ==================================================================================
+ * Layout-Styling
+ * ==================================================================================
+ */
+
+window {
+    background-color:  @bg;
+    width:             50%;
+    border:            1px;
+    border-color:      @border-col;
+    padding:           0.2em;
+}
+
+mainbox {
+    children:          [ inputbar, listview ];
+}
+
+listview {
+    columns:           1;
+    lines:             20;
+    layout:            vertical;
+    fixed-height:      false;
+    spacing:           1px;
+}
+
+/*
+ * ==================================================================================
+ * Element-Styling
+ * ==================================================================================
+ */
+
+inputbar {
+    padding:           8px 12px;
+    spacing:           10px;
+    children:          [ prompt, entry ];
+    margin:            0 0 5px 0; /* Kleiner Abstand unter der Eingabezeile */
+}
+
+prompt {
+    text-color:        @fg;
+}
+
+entry {
+    placeholder:       "Search...";
+    text-color:        @yellow; /* Der eingegebene Text ist gelb */
+}
+
+element {
+    padding:           2px 10px;
+}
+
+element-text {
+    background-color:  inherit;
+    text-color:        inherit;
+    vertical-align:    0.3;
+}
+
+element selected {
+    background-color:  @bg;
+    text-color:        @selected-fg;
+    font:              "monospace 13 bold"; /* NEU: Macht den Text fett */
+    /* Roter Balken links */
+    border:            0px 0px 0px 3px;
+    border-color:      @red;
+}

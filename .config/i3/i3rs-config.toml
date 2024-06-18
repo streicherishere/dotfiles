@@ -1,0 +1,73 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "bad-wolf"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "custom"
+command = '~/scripts/python/mite.py | tail -1'
+interval = 60
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(max_w:20)  $play  $next  |}"
+player = "spotify"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = "$timestamp.datetime(f:'%H:%M:%S    %d.%m.%Y  -  KW: %V')"
+
+[[block]]
+block = "load"
+interval = 1
+format = "$icon:   $1m.eng(w:4)"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $frequency"
+info_cpu = 20
+warning_cpu = 50
+critical_cpu = 90
+
+[[block]]
+block = "memory"
+interval = 30
+format = " $icon $mem_used_percents.eng(w:1)"
+warning_mem = 70
+critical_mem = 90
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = " $icon   $available.eng(w:2) "
+
+[[block]]
+block = "net"
+format_alt = "$icon {$signal_strength $ssid $frequency | Wired connection} $device"
+format =  "$icon {$signal_strength | LAN:} $device"
+
+[[block]]
+block = "custom"
+command = "curl ifconfig.me -4"
+interval = 100
+
+[[block]]
+block = "battery"
+format = "$percentage"
+driver = "upower"

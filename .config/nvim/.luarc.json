@@ -1,0 +1,7 @@
+{
+  "diagnostics.globals": [
+    "vim",
+    "live_grep_in_selected_directory",
+    "select_directory_and_live_grep"
+  ]
+}
