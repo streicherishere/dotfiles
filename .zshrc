@@ -20,7 +20,9 @@ plug "kutsan/zsh-system-clipboard"
 
 # Example sourcing of local files
 plug "$HOME/.config/zsh/aliases.zsh"
+plug "$HOME/.config/zsh/privat_aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
+
 
 # Load and initialise completion system
 autoload -Uz compinit

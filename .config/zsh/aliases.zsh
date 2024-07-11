@@ -1,9 +1,6 @@
 # alias.sh
 
 alias ip='ip -color=auto'
-
-alias kali='lxc start gui-kali; lxc kali gui-kali'
-alias kali-stop='lxc stop gui-kali;'
 alias sshs='~/scripts/sshs.sh'
 alias hosts='cat /etc/hosts | grep -v "^#" | tr " " "\n" | fzf | xclip'
 
@@ -26,5 +23,27 @@ alias ps_cpu='ps -axo pid,pcpu,comm --sort=-pcpu | head -20'
 
 alias dm='sudo dmesg --color=always | less -R'
 
-
 alias pacman_list="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+
+alias paca="~/scripts/arch/arch-installer/yay-commands.sh"
+
+alias yu='yay -Syua'        # Synchronize with repositories and upgrade packages, including AUR packages.
+alias yi='yay -S'           # Install a specific package from repos added to the system
+alias yil='yay -U'          # Install specific package that has been downloaded to the local system
+alias yr='yay -R'           # Remove package but retain configs and required dependencies
+alias yrall='yay -Rns'      # Remove package or packages , its configuration and all unwanted dependencies
+alias yip='yay -Si'         # Display information about a given package located in the repositories
+alias ys='yay -Ss'          # Search for package or packages in the repositories
+alias yil='yay -Qi'         # Display information about a given package in the local database
+alias ysl='yay -Qs'         # Search for package(s) in the local database
+alias yll='yay -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
+alias yro='yay -Qtd'        # Remove orphans using yay
+alias pacu='sudo pacman -Syu'       # Update the system and upgrade all system packages.
+alias paci='sudo pacman -S'         # Install a specific package from repos added to the system
+alias pacl='sudo pacman -U'         # Install specific package that has been downloaded to the local system
+alias paci='pacman -Si'             # Display information about a given package located in the repositories
+alias pacs='pacman -Ss'             # Search for package or packages in the repositories
+alias pacr='sudo pacman -R'         # Remove the specified package but retain its configuration and deps
+alias pacrall='sudo pacman -Rns'    # Remove package, its configuration and all unwanted dependencies
+alias pacsl='pacman -Qi'            # Display information about a given package in the local database
+alias paclocs='pacman -Qs'          # Search for package/packages in the local database
