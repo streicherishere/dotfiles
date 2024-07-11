@@ -213,10 +213,10 @@ bar {
     position top
     status_command i3status -c ~/.config/i3/i3status.conf
 }
+
 exec --no-startup-id ~/scripts/arch/home.sh
 exec --no-startup-id ~/scripts/arch/split-screen-stop.sh
-exec_always --no-startup-id feh --bg-fill ~/Downloads/roberto-nickson-vZ1JAXUO3-0-unsplash.jpg
-
+exec_always --no-startup-id feh --bg-fill ~/picture/roberto-nickson-vZ1JAXUO3-0-unsplash.jpg
 bindsym Mod1+x exec ~/scripts/arch/split-screen.sh
 bindsym Mod1+z exec ~/scripts/arch/split-screen-stop.sh
 bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh
@@ -225,3 +225,8 @@ bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh
 ## Clipboard Screenshots
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
+
+
+# hide mouse pointer
+exec_always --no-startup-id unclutter -idle 0.01 -root
+
