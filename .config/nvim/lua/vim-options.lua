@@ -13,6 +13,7 @@ vim.opt.termguicolors = true -- termguicolors for colorscheme
 vim.opt.nu = true -- Displays line numbers in the left gutter.
 vim.opt.relativenumber = true -- Displays relative line numbers in addition to absolute line numbers.
 vim.wo.number = true -- Displays absolute line numbers in the left gutter.
+-- vim.opt.listchars = { space = '_', tab = '>-', trail = '~' }
 
 -- tabs & indentation
 vim.opt.expandtab = true
