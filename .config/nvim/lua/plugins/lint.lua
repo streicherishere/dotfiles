@@ -13,7 +13,7 @@ return {
 				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
 				go = { "golangcilint" },
-				lua = { "selene", "luacheck" },
+				lua = { "selene" },
 				sh = { "shellcheck" },
 				yaml = { "yamllint" },
 				ansible = { "ansible_lint" },
