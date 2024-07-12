@@ -13,15 +13,14 @@ vim.opt.termguicolors = true -- termguicolors for colorscheme
 vim.opt.nu = true -- Displays line numbers in the left gutter.
 vim.opt.relativenumber = true -- Displays relative line numbers in addition to absolute line numbers.
 vim.wo.number = true -- Displays absolute line numbers in the left gutter.
--- vim.opt.listchars = { space = '_', tab = '>-', trail = '~' }
 
 -- tabs & indentation
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.textwidth = 80
-vim.opt.wrap = false
+vim.opt.textwidth = 0 -- Prevent Automatic Line Breaking
+vim.opt.wrap = true -- automatically wraps at the window edge based on textwidth
 vim.opt.colorcolumn = "80"
 vim.opt.smartindent = true
 
