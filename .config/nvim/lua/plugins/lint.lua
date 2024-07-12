@@ -10,7 +10,7 @@ return {
 			local lint = require("lint")
 
 			lint.linters_by_ft = {
-				markdown = { "vale" },
+				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
 				go = { "golangcilint" },
 				lua = { "selene", "luacheck" },
