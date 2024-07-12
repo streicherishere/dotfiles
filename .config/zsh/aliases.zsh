@@ -25,7 +25,7 @@ alias dm='sudo dmesg --color=always | less -R'
 
 alias pacman_list="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
-alias paca="~/scripts/arch/arch-installer/yay-commands.sh"
+alias paca="~/scripts/commands/commands.sh"
 
 alias yu='yay -Syua'        # Synchronize with repositories and upgrade packages, including AUR packages.
 alias yi='yay -S'           # Install a specific package from repos added to the system
