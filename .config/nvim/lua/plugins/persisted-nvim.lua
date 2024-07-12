@@ -5,7 +5,7 @@ return {
 		config = function()
 			require("persisted").setup({
 				autosave = true,
-        autoload = true,
+        autoload = false,
 			})
 		end,
 	},
