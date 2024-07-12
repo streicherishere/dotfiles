@@ -226,7 +226,10 @@ bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
 
-
 # hide mouse pointer
 exec_always --no-startup-id unclutter -idle 0.01 -root
+
+# clipboard sync
+exec_always --no-startup-id autocutsel -selection PRIMARY
+exec_always --no-startup-id autocutsel -selection CLIPBOARD
 
