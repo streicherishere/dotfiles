@@ -38,15 +38,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nagstamon
 
 exec --no-startup-id picom
-# language
-exec --no-startup-id setxkbmap -layout us -variant altgr-intl
-
-# keyboard speed
-exec --no-startup-id xset r rate 250 80
-
-exec --no-startup-id xset s off
-exec --no-startup-id xset -dpms
-exec --no-startup-id set s noblank
 
 bindsym Mod1+c exec --no-startup-id clipmenu
 
@@ -216,11 +207,11 @@ bar {
 
 exec --no-startup-id ~/scripts/arch/home.sh
 exec --no-startup-id ~/scripts/arch/split-screen-stop.sh
-exec_always --no-startup-id feh --bg-fill ~/picture/roberto-nickson-vZ1JAXUO3-0-unsplash.jpg
+exec_always --no-startup-id ~/scripts/arch/settings.sh
+
 bindsym Mod1+x exec ~/scripts/arch/split-screen.sh
 bindsym Mod1+z exec ~/scripts/arch/split-screen-stop.sh
 bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh
-
 
 ## Clipboard Screenshots
 bindsym Print       exec flameshot full
