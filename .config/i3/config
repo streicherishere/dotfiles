@@ -35,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # nagstamon
-exec --no-startup-id nagstamon
+exec_always --no-startup-id nagstamon
 
 exec --no-startup-id picom
 
@@ -206,11 +206,12 @@ bar {
 }
 
 exec --no-startup-id ~/scripts/arch/home.sh
-exec --no-startup-id ~/scripts/arch/split-screen-stop.sh
+exec --no-startup-id ~/scripts/arch/black-screen.sh
 exec_always --no-startup-id ~/scripts/arch/settings.sh
 
 bindsym Mod1+x exec ~/scripts/arch/split-screen.sh
-bindsym Mod1+z exec ~/scripts/arch/split-screen-stop.sh
+bindsym Mod1+z exec ~/scripts/arch/black-screen.sh
+bindsym Mod1+q exec ~/scripts/arch/split-screen-stop.sh
 bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh
 
 ## Clipboard Screenshots
