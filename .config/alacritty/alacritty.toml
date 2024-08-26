@@ -39,5 +39,6 @@ action = "Copy"
 key = "C"
 mods = "Control|Shift"
 
+
 [selection]
 save_to_clipboard = true
