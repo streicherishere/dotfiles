@@ -53,8 +53,14 @@ return {
 			})
 		end
 
-		vim.api.nvim_set_keymap("n", "<C-t>", ":FzfLua files<CR>", {})
-    vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua lgrep_curbuf<CR>", {})
+		vim.api.nvim_set_keymap("n", "<C-t>", ":FzfLua files<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua lgrep_curbuf<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap(
+			"n",
+			"<c-k>",
+			"<cmd>lua require('fzf-lua').keymaps({ previewer = true })<CR>",
+			{ noremap = true, silent = true }
+		)
 
 		vim.api.nvim_set_keymap(
 			"n",
