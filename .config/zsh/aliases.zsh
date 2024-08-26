@@ -47,3 +47,10 @@ alias pacr='sudo pacman -R'         # Remove the specified package but retain it
 alias pacrall='sudo pacman -Rns'    # Remove package, its configuration and all unwanted dependencies
 alias pacsl='pacman -Qi'            # Display information about a given package in the local database
 alias paclocs='pacman -Qs'          # Search for package/packages in the local database
+
+alias host='sudo vim /etc/hosts'
+
+# Move cursor by word
+bindkey "^[[1;5D" backward-word   # Ctrl + Left Arrow
+bindkey "^[[1;5C" forward-word    # Ctrl + Right Arrow
+
