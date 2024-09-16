@@ -25,7 +25,6 @@ export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true pass fzf
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export PASS_GIT_HELPER_SKIP=""

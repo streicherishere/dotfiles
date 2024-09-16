@@ -15,7 +15,6 @@ plug "zap-zsh/vim"
 plug "zsh-history-substring-search"
 plug "ap-zsh/supercharge"
 plug "zap-zsh/exa"
-plug "romkatv/powerlevel10k"
 plug "kutsan/zsh-system-clipboard"
 
 # Example sourcing of local files
@@ -33,5 +32,32 @@ source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init --cmd cd  zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Enable substitution in the prompt.
+setopt prompt_subst
+
+# Function to get the current Git branch name.
+function git_branch_name() {
+  # Get the current Git branch name.
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+
+  # If a branch name is found, format it for display.
+  if [[ -n $branch ]]; then
+    echo "%F{yellow} ($branch)%f"
+  fi
+}
+
+# Function to set the prompt based on the exit code.
+function set_prompt() {
+  # Check the exit code of the last command.
+  if [[ $? -eq 0 ]]; then
+    # Exit code is 0 (success): set the prompt indicator to white.
+    PS1='%F{white}%~$(git_branch_name) %F{green}>%f '
+  else
+    # Exit code is not 0 (error): set the prompt indicator to white.
+    PS1='%F{white}%~$(git_branch_name) %F{red}>%f '
+  fi
+}
+
+# Add the set_prompt function to precmd functions to update the prompt before each new command.
+precmd_functions+=(set_prompt)

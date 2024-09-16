@@ -15,6 +15,7 @@ alias ssh='TERM=xterm-256color ssh'
 
 alias lg='lazygit'
 alias p='pass fzf'
+alias pws='pass fzf -s'
 alias pw='~/scripts/create_pass_entry.sh'
 
 alias clipmenu-clear='~/scripts/clipmenu-clear.sh'
