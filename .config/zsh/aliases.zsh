@@ -4,6 +4,8 @@ alias ip='ip -color=auto'
 alias sshs='~/scripts/sshs.sh'
 alias hosts='cat /etc/hosts | grep -v "^#" | tr " " "\n" | fzf | xclip'
 
+alias cal='~/scripts/open-calendar.sh'
+
 #alias
 alias lock="i3lock --color 000000"
 
@@ -55,3 +57,5 @@ alias host='sudo vim /etc/hosts'
 bindkey "^[[1;5D" backward-word   # Ctrl + Left Arrow
 bindkey "^[[1;5C" forward-word    # Ctrl + Right Arrow
 
+
+alias sd='selected=$(find * -type d -o -type f | fzf) && if [ -d "$selected" ]; then cd "$selected"; else vim "$selected"; fi'
