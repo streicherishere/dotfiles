@@ -22,8 +22,8 @@ return {
 					track_location = true,
 				},
 			})
-			vim.keymap.set("n", "]q", "<CMD>QNext<CR>", { silent = true })
-			vim.keymap.set("n", "[q", "<CMD>QPrev<CR>", { silent = true })
+			vim.keymap.set("n", "<C-]>", "<CMD>QNext<CR>", { silent = true, remap = false })
+			vim.keymap.set("n", "<C-[>", "<CMD>QPrev<CR>", { silent = true, remap = false })
 			-- toggle the quickfix open/closed without jumping to it
 			vim.keymap.set("n", "<leader>q", "<CMD>QFToggle!<CR>")
 			vim.keymap.set("n", "<leader>l", "<CMD>LLToggle!<CR>")

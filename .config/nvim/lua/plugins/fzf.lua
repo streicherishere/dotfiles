@@ -52,6 +52,8 @@ return {
 				},
 			})
 		end
+		vim.api.nvim_set_keymap("n", "<C-x>", ":FzfLua changes<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<C-z>", ":FzfLua jumps<CR>", { noremap = true, silent = true })
 
 		vim.api.nvim_set_keymap("n", "<C-t>", ":FzfLua files<CR>", { noremap = true, silent = true })
 		vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua lgrep_curbuf<CR>", { noremap = true, silent = true })
