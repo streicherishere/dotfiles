@@ -52,6 +52,9 @@ return {
 				},
 			})
 		end
+
+		vim.api.nvim_set_keymap("n", "<leader>0", ":FzfLua command_history<CR>", { noremap = true, silent = true })
+
 		vim.api.nvim_set_keymap("n", "<C-x>", ":FzfLua changes<CR>", { noremap = true, silent = true })
 		vim.api.nvim_set_keymap("n", "<C-z>", ":FzfLua jumps<CR>", { noremap = true, silent = true })
 
