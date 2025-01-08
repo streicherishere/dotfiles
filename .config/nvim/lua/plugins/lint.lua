@@ -18,13 +18,13 @@ return {
 				yaml = { "yamllint" },
 				ansible = { "ansible_lint" },
 				terraform = { "tfsec", "tflint" },
-				python = { "pylint", "mypy", "ruff" },
+				python = { "ruff" },
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-			  -- pattern = { "*.tf", "*.py", "*.sh", "*.yaml", "*.yml" "},
+				-- pattern = { "*.tf", "*.py", "*.sh", "*.yaml", "*.yml" "},
 				group = lint_augroup,
 				callback = function()
 					lint.try_lint()
