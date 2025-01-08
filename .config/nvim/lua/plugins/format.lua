@@ -18,7 +18,7 @@ return {
 					sh = { "beautysh" },
 					terraform = { "terraform_fmt" },
 					yaml = { "prettier" },
-					python = { "isort", "black" },
+					python = { "autopep8", "ruff" },
 					go = { "goimports", "gofmt" },
 				},
 
