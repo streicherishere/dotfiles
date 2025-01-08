@@ -19,6 +19,7 @@ plug "$HOME/.config/zsh/privat_aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 
 
+fpath=(~/.zsh.d/ $fpath)
 # Load and initialise completion system
 autoload -Uz compinit
 autorestic completion zsh > "${fpath[1]}/_autorestic"
@@ -26,7 +27,6 @@ compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init --cmd cd  zsh)"
-
 
 # Enable substitution in the prompt.
 setopt prompt_subst
@@ -56,3 +56,4 @@ function set_prompt() {
 
 # Add the set_prompt function to precmd functions to update the prompt before each new command.
 precmd_functions+=(set_prompt)
+
