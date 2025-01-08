@@ -32,12 +32,12 @@ mods = "Control"
 [[keyboard.bindings]]
 action = "Paste"
 key = "P"
-mods = "Control"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "Copy"
 key = "C"
-mods = "Control"
+mods = "Control|Shift"
 
 
 [selection]
