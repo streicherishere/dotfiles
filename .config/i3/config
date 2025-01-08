@@ -41,8 +41,8 @@ exec_always --no-startup-id nagstamon
 
 bindsym Mod1+c exec --no-startup-id clipmenu
 
-bindsym Mod1+p exec ~/scripts/passmenu
-bindsym Mod1+Shift+h exec ~/scripts/hosts_selector.sh
+bindsym Mod1+p exec ~/scripts/bin/passmenu.sh
+bindsym Mod1+Shift+h exec ~/scripts/bin/hosts_selector.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -209,15 +209,15 @@ bar {
     status_command i3status -c ~/.config/i3/i3status.conf
 }
 
-exec --no-startup-id ~/scripts/arch/home.sh
-exec --no-startup-id ~/scripts/arch/split-screen.sh
-exec_always --no-startup-id ~/scripts/arch/settings.sh
+exec --no-startup-id ~/scripts/bin/home.sh
+exec --no-startup-id ~/scripts/bin/split-screen.sh
+exec_always --no-startup-id ~/scripts/bin/settings.sh
 
-bindsym Mod1+x exec ~/scripts/arch/split-screen.sh
-bindsym Mod1+z exec ~/scripts/arch/black-screen.sh
-bindsym Mod1+q exec ~/scripts/arch/split-screen-stop.sh
-bindsym Mod1+Shift+p exec ~/scripts/bwc-password.sh --sync
-bindsym Mod1+Shift+f exec ~/.config/tridactyl/serach-config.sh
+bindsym Mod1+x exec ~/scripts/bin/split-screen.sh
+bindsym Mod1+z exec ~/scripts/bin/black-screen.sh
+bindsym Mod1+q exec ~/scripts/bin/split-screen-stop.sh
+bindsym Mod1+Shift+p exec ~/scripts/bin/bwc-password.sh --sync
+bindsym Mod1+Shift+f exec ~/.config/tridactyl/search-config.sh
 
 ## Clipboard Screenshots
 bindsym Print       exec flameshot full

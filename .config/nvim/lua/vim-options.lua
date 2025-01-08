@@ -92,6 +92,7 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current spli
 vim.g.cheat_default_window_layout = "vertical_split"
 -- vim.api.nvim_set_keymap("n", "<leader>c", ":Cheat<CR>", { silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>w", ":SudoSaveFile<CR>", { noremap = true, silent = true })
 
 -- trim_whitespace
 vim.api.nvim_exec(
