@@ -24,6 +24,7 @@ for_window [class="^.*"] border pixel 1
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id ~/scripts/bin/settings.sh
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -43,7 +44,7 @@ exec --no-startup-id picom
 
 bindsym Mod1+o exec --no-startup-id clipmenu
 
-bindsym Mod1+p exec ~/scripts/bin/passmenu.sh
+bindsym Mod1+p exec rofi-pass
 bindsym Mod1+b exec rofi-rbw
 bindsym Mod1+Shift+h exec ~/scripts/bin/hosts_selector.sh
 
@@ -224,6 +225,9 @@ bindsym Mod1+Shift+z exec ~/scripts/bin/split-screen-stop.sh
 bindsym Mod1+Shift+f exec ~/.config/tridactyl/search-config.sh
 
 ## Clipboard Screenshots
+bindsym Mod1+q  exec ~/scripts/commands/commands.sh
+
+## Clipboard Screenshots
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
 
@@ -236,6 +240,7 @@ exec_always --no-startup-id autocutsel -selection CLIPBOARD
 
 #warpd
 exec --no-startup-id warpd
+exec --no-startup-id deja-dup --backup
 
 bindsym Mod1+x exec warpd --hint
 bindsym Mod1+z exec warpd --normal
