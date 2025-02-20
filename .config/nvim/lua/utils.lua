@@ -46,4 +46,16 @@ M.sudo_exec = function(cmd)
 	return vim.v.shell_error == 0
 end
 
+vim.keymap.set("n", "<leader>f", function()
+    local first_line = vim.fn.getline(1)
+    local branch_name = first_line:match("'(.-)'")
+    if branch_name then
+        local finish_text = "finish " .. branch_name .. "\n"
+        vim.fn.setreg("+", finish_text)
+        print("✔ Kopiert: '" .. finish_text .. "' in die Zwischenablage")
+    else
+        print("❌ Kein Branch-Name gefunden")
+    end
+end, { desc = "Kopiere 'finish <branch-name>' in die Zwischenablage" })
+
 return M

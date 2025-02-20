@@ -104,3 +104,8 @@ vim.api.nvim_exec(
 ]],
 	false
 )
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  command = "setlocal modifiable"
+})
