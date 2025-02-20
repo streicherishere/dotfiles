@@ -1,4 +1,8 @@
 # alias.sh
+#
+# function
+#
+
 
 alias ip='ip -color=auto'
 alias sshs='sshs.sh'
@@ -20,8 +24,11 @@ alias sshadd='sshadd.sh'
 
 alias lg='lazygit'
 alias p='pass.sh fzf'
-alias pws='pass.sh fzf -s'
+alias pass='pass.sh fzf'
+alias pass-edit='pass.sh fzf -s | xargs pass edit'
+alias pe='pass.sh fzf -s | xargs pass edit'
 alias pw='create_pass_entry.sh'
+alias pm='selected=$(p -s) && echo -n "Neuer Name/Pfad [$selected]: " && read new_name && pass.sh mv "$selected" "${new_name:-$selected}"'
 alias h='cht.sh'
 
 alias clipmenu-clear='clipmenu-clear.sh'
