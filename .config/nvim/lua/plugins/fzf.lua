@@ -7,7 +7,8 @@ return {
 		require("fzf-lua").setup({
 			keymap = {
 				fzf = {
-					["ctrl-q"] = "select-all+accept",
+					["ctrl-a"] = "select-all",
+					["ctrl-q"] = "accept", -- Alternative Taste zum Bestätigen
 				},
 			},
 		})
