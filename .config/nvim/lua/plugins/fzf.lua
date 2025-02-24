@@ -11,6 +11,9 @@ return {
 					["ctrl-q"] = "accept", -- Alternative Taste zum Bestätigen
 				},
 			},
+			files = {
+				cmd = 'rg --files --follow --hidden --glob "!{.git,node_modules}/*"', -- Symlinks und versteckte Dateien
+			},
 		})
 
 		function live_grep_in_selected_directory(selected_directory)
@@ -21,7 +24,7 @@ return {
 		end
 
 		function select_directory_and_live_grep()
-			require("fzf-lua").fzf_exec("find ~/work/projects -type d -maxdepth 2", {
+			require("fzf-lua").fzf_exec("fd . ~/work/projects --max-depth=2", {
 				actions = {
 					["default"] = function(selected)
 						if selected and #selected > 0 then
@@ -40,7 +43,7 @@ return {
 		end
 
 		function select_directory_and_files()
-			require("fzf-lua").fzf_exec("find ~/work/projects -type d -maxdepth 2", {
+			require("fzf-lua").fzf_exec("fd . ~/work/projects --max-depth=2 --type d", {
 				actions = {
 					["default"] = function(selected)
 						if selected and #selected > 0 then
@@ -77,20 +80,20 @@ return {
 		vim.api.nvim_set_keymap(
 			"n",
 			"<C-y>",
-			[[<cmd>lua require'fzf-lua'.live_grep({ cmd = "rg --hidden --line-number --column --color=always --glob '!{.git,node_modules}/*'" })<CR>]],
+			[[<cmd>lua require'fzf-lua'.live_grep({ cmd = "rg --hidden --follow --line-number --column --color=always --glob '!{.git,node_modules}/*'" })<CR>]],
 			{}
 		)
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<leader>ff",
+			"<leader>fg",
 			"<cmd>lua select_directory_and_live_grep()<CR>",
 			{ noremap = true, silent = true }
 		)
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<leader>fp",
+			"<leader>fd",
 			"<cmd>lua select_directory_and_files()<CR>",
 			{ noremap = true, silent = true }
 		)
