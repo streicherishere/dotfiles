@@ -29,3 +29,13 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PASS_GIT_HELPER_SKIP=""
 export EDITOR=/usr/bin/nvim
 export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# Share history between multiple Zsh sessions
+setopt HIST_IGNORE_DUPS  # Ignore duplicate commands
+setopt HIST_IGNORE_SPACE # Ignore commands starting with a space
+setopt HIST_SAVE_NO_DUPS # Don't save duplicate history
+setopt SHARE_HISTORY     # Share history across all sessions
+setopt APPEND_HISTORY    # Append history to the history file (instead of overwriting it)
+HISTFILE=~/.zsh_history  # Use a shared history file
+HISTSIZE=10000           # Set the maximum number of commands to remember
+SAVEHIST=10000
