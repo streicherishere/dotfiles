@@ -9,6 +9,8 @@ return {
 		config = function()
 			local lint = require("lint")
 
+			lint.linters.ruff.args = { "--src", vim.fn.getcwd() }
+
 			lint.linters_by_ft = {
 				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
