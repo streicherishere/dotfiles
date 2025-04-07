@@ -22,6 +22,7 @@ return {
 				"docker_compose_language_service",
 				"dockerls",
 				"marksman",
+				"jinja_lsp",
 			},
 		},
 	},
@@ -73,6 +74,11 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.html.setup({
 				capabilites = capabilities,
+				filetypes = { "html" },
+			})
+			lspconfig.jinja_lsp.setup({
+				capabilites = capabilities,
+				filetypes = { "htmldjango" },
 			})
 			lspconfig.lua_ls.setup({
 				capabilites = capabilities,

@@ -20,6 +20,8 @@ return {
 					yaml = { "prettier" },
 					python = { "autopep8", "ruff" },
 					go = { "goimports", "gofmt" },
+					html = { "djlint" },
+					htmldjango = { "djlint" },
 				},
 
 				--				format_on_save = {
