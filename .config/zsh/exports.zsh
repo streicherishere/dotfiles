@@ -39,3 +39,8 @@ setopt APPEND_HISTORY    # Append history to the history file (instead of overwr
 HISTFILE=~/.zsh_history  # Use a shared history file
 HISTSIZE=10000           # Set the maximum number of commands to remember
 SAVEHIST=10000
+
+# nvim
+export GITLAB_TOKEN=$(pass work/gitlab/personal-access-token | head -1)
+export GITLAB_URL="https://gitlab.in2code.de"
+export BROWSER=firefox

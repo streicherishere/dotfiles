@@ -10,6 +10,17 @@ return {
 			local lint = require("lint")
 
 			lint.linters.ruff.args = { "--src", vim.fn.getcwd() }
+			-- Debuggen: Wrapper für ansible_lint, um Diagnosen zu inspizieren
+			-- 			lint.linters.ansible_lint = require("lint.util").wrap(lint.linters.ansible_lint, function(diagnostic)
+			-- 				-- Zeige die Diagnose in der Konsole zum Debuggen
+			-- 				print("ansible_lint diagnostic:")
+			-- 				print(vim.inspect(diagnostic)) -- Zeigt die vollständige Diagnose in der Konsole an
+			--
+			-- 				-- Optional: Modifiziere die Schwere, falls nötig
+			-- 				diagnostic.severity = vim.diagnostic.severity.WARN -- Beispiel: ändere Schwere der Diagnose
+
+			-- 				return diagnostic
+			-- 			end)
 
 			lint.linters_by_ft = {
 				markdown = { "markdownlint" },
@@ -18,9 +29,11 @@ return {
 				-- lua = { "selene" },
 				sh = { "shellcheck" },
 				yaml = { "yamllint" },
-				ansible = { "ansible_lint" },
+				["yaml.ansible"] = { "ansible_lint" },
 				terraform = { "tfsec", "tflint" },
 				python = { "ruff" },
+				htmldjango = { "djlint" },
+				html = { "djlint" },
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -36,6 +49,17 @@ return {
 			vim.keymap.set("n", "<leader>l", function()
 				lint.try_lint()
 			end, { desc = "Trigger linting for current file" })
+
+			vim.diagnostic.config({
+				virtual_text = {
+					spacing = 4,
+					prefix = "●",
+				},
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+			})
 		end,
 	},
 }

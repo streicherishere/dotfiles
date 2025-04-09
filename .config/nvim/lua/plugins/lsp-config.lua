@@ -68,16 +68,18 @@ return {
 			{ "antosha417/nvim-lsp-file-operations", config = true },
 			{ "folke/neodev.nvim", opts = {} },
 		},
+
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local util = require("lspconfig.util")
 
 			local lspconfig = require("lspconfig")
 			lspconfig.html.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				filetypes = { "html" },
 			})
 			lspconfig.jinja_lsp.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				filetypes = { "htmldjango" },
 			})
 			lspconfig.lua_ls.setup({
@@ -88,6 +90,15 @@ return {
 			})
 			lspconfig.ansiblels.setup({
 				capabilities = capabilities,
+				settings = {
+					ansible = {
+						validation = {
+							lint = {
+								enabled = false,
+							},
+						},
+					},
+				},
 			})
 			lspconfig.tflint.setup({
 				capabilities = capabilities,
@@ -173,7 +184,7 @@ return {
 		keys = {
 			{
 				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
+				"<cmd>: Trouble diagnostics toggle <cr>",
 				desc = "Diagnostics (Trouble)",
 			},
 			{

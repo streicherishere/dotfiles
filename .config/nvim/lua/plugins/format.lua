@@ -9,7 +9,7 @@ return {
 					javascript = { "prettier" },
 					json = { "prettier" },
 					markdown = { "prettier" },
-					html = { "prettier" },
+					html = { "prettier", "djlint" },
 					css = { "prettier" },
 
 					tex = { "latexindent" },
@@ -20,7 +20,6 @@ return {
 					yaml = { "prettier" },
 					python = { "autopep8", "ruff" },
 					go = { "goimports", "gofmt" },
-					html = { "djlint" },
 					htmldjango = { "djlint" },
 				},
 
