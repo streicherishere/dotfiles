@@ -10,13 +10,69 @@ configuration{
     display-run: " 🏃  Run ";
     display-window: " 🪟  Window";
     sidebar-mode: true;
-    kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+    kb-remove-to-eol: "Control+Shift+y";
+    kb-row-up: "Up,Control+k";
     kb-row-down: "Down,Control+j";
     kb-accept-entry: "Control+m,Return,KP_Enter";
-    kb-remove-to-eol: "Control+Shift+e";
-    /*kb-mode-next: "Shift+Right,Control+Tab,Control+l";*/
-    kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
-    kb-remove-char-back: "BackSpace";
+    kb-screenshot: "Control+st-cfrqKxu72aWkFPaTJ";
 }
 
-@theme "catppuccin-mocha"
+@theme "/dev/null"
+
+* {
+  bg: #FFFFFF;
+  bg-alt: #444b6a;
+
+  fg: #000060;
+  fg-alt: #787c99;
+
+  background-color: @bg;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 50%;
+}
+
+element {
+    width: 20px;       /* Breite der Einträge auf 150 Pixel begrenzen */
+    padding: 5px;       /* Innenabstand um jeden Eintrag */
+}
+
+element selected {
+  background-color: @bg-alt;
+  text-color: @bg;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.0;
+}
+
+listview {
+    columns: 1;         /* Zwei Spalten */
+    fixed-columns: true; /* Spaltenanzahl bleibt immer gleich */
+    layout: vertical;   /* Elemente werden in Spalten vertikal gestapelt */
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 0;
+  text-color: @bg;
+}
+
+element {
+    width: 20px;       /* Breite der Einträge auf 150 Pixel begrenzen */
+    padding: 1px;       /* Innenabstand um jeden Eintrag */
+}
+
+#textbox {
+    width: 200px;       /* Breite der Texte explizit begrenzen */
+    horizontal-align: 0; /* Linksbündig */
+}
+
