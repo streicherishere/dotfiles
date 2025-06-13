@@ -20,6 +20,7 @@ return {
 					"json",
 					"ssh_config",
 					"rasi",
+					"latex",
 				},
 				auto_install = true,
 				highlight = { enable = true },
