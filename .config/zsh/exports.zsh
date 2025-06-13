@@ -44,3 +44,7 @@ SAVEHIST=10000
 export GITLAB_TOKEN=$(pass work/gitlab/personal-access-token | head -1)
 export GITLAB_URL="https://gitlab.in2code.de"
 export BROWSER=firefox
+
+export CM_SELECTIONS=primary
+export CM_DIR=$HOME/.cache/clipmenu_primary
+
