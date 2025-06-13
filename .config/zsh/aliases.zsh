@@ -71,3 +71,6 @@ bindkey "^[[1;5C" forward-word    # Ctrl + Right Arrow
 
 
 alias sd='selected=$(find * -type d -o -type f | fzf) && if [ -d "$selected" ]; then cd "$selected"; else vim "$selected"; fi'
+
+alias cit='glab ci trace'
+alias cip='glab ci view'
