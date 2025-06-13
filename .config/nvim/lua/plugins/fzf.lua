@@ -80,7 +80,7 @@ return {
 		vim.api.nvim_set_keymap(
 			"n",
 			"<C-y>",
-			[[<cmd>lua require'fzf-lua'.live_grep({ cmd = "rg --hidden --follow --line-number --column --color=always --glob '!{.git,node_modules}/*'" })<CR>]],
+			[[<cmd>lua require'fzf-lua'.live_grep({ cmd = "rg --hidden --follow --line-number --column --color=always --glob '!**/.git/**' --glob '!**/node_modules/**'" }) <CR>]],
 			{}
 		)
 
