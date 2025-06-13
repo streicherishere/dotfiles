@@ -1,5 +1,3 @@
-vim.cmd("command! -nargs=0 SudoSaveFile lua require('utils').sudo_save_file()")
-
 local M = {}
 
 M.sudo_save_file = function()
@@ -47,15 +45,56 @@ M.sudo_exec = function(cmd)
 end
 
 vim.keymap.set("n", "<leader>f", function()
-    local first_line = vim.fn.getline(1)
-    local branch_name = first_line:match("'(.-)'")
-    if branch_name then
-        local finish_text = "finish " .. branch_name .. "\n"
-        vim.fn.setreg("+", finish_text)
-        print("✔ Kopiert: '" .. finish_text .. "' in die Zwischenablage")
-    else
-        print("❌ Kein Branch-Name gefunden")
-    end
-end, { desc = "Kopiere 'finish <branch-name>' in die Zwischenablage" })
+	local first_line = vim.fn.getline(1)
+	local branch_name = first_line:match("'(.-)'")
+	if branch_name then
+		local finish_text = "finish " .. branch_name .. "\n"
+		vim.fn.setreg("+", finish_text)
+		print("✔ Copied: '" .. finish_text .. "' to clipboard")
+	else
+		print("❌ No branch name found")
+	end
+end, { desc = "Copy 'finish <branch-name>' to clipboard" })
 
-return M
+local function get_repo_url()
+  local file_dir = vim.fn.expand("%:p:h")
+  local git_cmd = string.format('git -C %q config --get remote.origin.url', file_dir)
+  local remote_url = vim.fn.systemlist(git_cmd)[1]
+
+  if not remote_url or remote_url == "" then
+    vim.notify("No Git remote URL found!", vim.log.levels.ERROR)
+    return nil
+  end
+
+  -- Convert SSH to HTTPS
+  local url = remote_url
+  url = url:gsub("^git@([^:]+):", "https://%1/")
+  url = url:gsub("%.git$", "")
+  return url
+end
+
+local function copy_repo_url()
+  local url = get_repo_url()
+  if url then
+    vim.fn.setreg('+', url)
+    vim.notify("📋 Copied repo URL to clipboard:\n" .. url)
+  end
+end
+
+local function open_repo_in_browser()
+  local url = get_repo_url()
+  if url then
+    local opener = vim.fn.has("mac") == 1 and "open"
+                or vim.fn.has("win32") == 1 and "start"
+                or "xdg-open"
+    vim.fn.jobstart({ opener, url }, { detach = true })
+    vim.notify("🌐 Opened repo URL in browser:\n" .. url)
+  end
+end
+
+-- Keymaps
+vim.keymap.set("n", "<leader>gY", copy_repo_url, { desc = "Copy Git repo URL" })
+vim.keymap.set("n", "<leader>gB", open_repo_in_browser, { desc = "Open Git repo in browser" })
+
+
+return k
