@@ -88,10 +88,22 @@ tiling_drag modifier titlebar
 ########### i3bar ############
 ##############################
 
+focus_on_window_activation smart
+
+
 bar {
     font pango:source firacode nerd font 10
     position top
-    status_command i3status -c ~/.config/i3/i3status.conf
+    status_command i3status-rs  ~/.config/i3/i3rs-config.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
 ##############################
@@ -113,10 +125,25 @@ exec_always --no-startup-id nm-applet
 ##############################
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 10 && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 10 && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute && $refresh_i3status
+
+assign [class="Bitwarden"] $ws7
+assign [class="Spotify"] $ws8
+assign [class="qutebrowser"] $ws9
+assign [class="Slack"] $ws10
+
+
+for_window [class="Bitwarden"] move to workspace $ws7; workspace $ws7
+for_window [class="Spotify"] move to workspace $ws8; workspace $ws8
+for_window [class="qutebrowser"] move to workspace $ws9; workspace $ws9
+for_window [class="Slack"] move to workspace $ws10; workspace $ws10
+
+workspace $ws7 output DP-2-2
+workspace $ws8 output DP-2-2
+workspace $ws9 output DP-2-2
+workspace $ws10 output DP-2-2
 
 set $ws1 "1"
 set $ws2 "2"
@@ -124,10 +151,12 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws7 "7:Bitwarden"
+set $ws8 "8:Spotify"
+set $ws9 "9:Meet"
+set $ws10 "10:Slack"
+
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -193,7 +222,8 @@ bindsym $mod1+h exec ~/scripts/bin/hosts_selector.sh
 bindsym $mod1+p exec rofi-pass
 bindsym $mod1+b exec rofi-rbw
 bindsym $mod1+c exec --no-startup-id ~/scripts/bin/commands.sh
-bindsym $mod1+q exec --no-startup-id clipmenu
+bindsym $mod1+q exec --no-startup-id ~/scripts/clipmenu/clipmenu-clipboard.sh
+
 bindsym $mod1+l exec ~/scripts/bin/slack-status.sh
 
 bindsym $mod+Shift+x exec ~/scripts/bin/split-screen.sh
@@ -206,8 +236,7 @@ bindsym Shift+Print exec flameshot gui
 bindsym $mod+Shift+P exec ~/scripts/bin/slack-status.sh
 
 # clipboard sync
-exec_always --no-startup-id autocutsel -selection PRIMARY
-exec_always --no-startup-id autocutsel -selection CLIPBOARD
+exec_always --no-startup-id sh -c 'pgrep -x autocutsel > /dev/null || autocutsel -selection CLIPBOARD'
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -237,7 +266,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # hide mouse pointer
-#exec_always --no-startup-id unclutter -idle 0.01 -root
+exec_always --no-startup-id unclutter -idle 0.01 -root
+
+# hide mouse pointer
+# exec_always ~/scripts/clipmenu/clipmenud-primary.sh
+exec_always --no-startup-id ~/scripts/clipmenu/clipmenud-clipboard.sh
 
 # warpd
 # exec --no-startup-id warpd
