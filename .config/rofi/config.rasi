@@ -1,20 +1,20 @@
 configuration{
     modi: "run,window,combi";
-    show-icons: true;
+    show-icons: false;
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-combi: " 🖥️  All ";
-    display-run: " 🏃  Run ";
-    display-window: " 🪟  Window";
-    sidebar-mode: true;
+    display-combi: "All ";
+    display-run: "Run ";
+    display-window: "Window";
+    sidebar-mode: false;
     kb-remove-to-eol: "Control+Shift+y";
     kb-row-up: "Up,Control+k";
     kb-row-down: "Down,Control+j";
     kb-accept-entry: "Control+m,Return,KP_Enter";
-    kb-screenshot: "Control+st-cfrqKxu72aWkFPaTJ";
+    kb-screenshot: "Control+s";
 }
 
 @theme "/dev/null"
@@ -28,19 +28,21 @@ configuration{
 
   background-color: @bg;
 
-  border: 0;
+  border: 2;
   margin: 0;
-  padding: 0;
+  padding: 2;
   spacing: 0;
 }
 
 window {
-  width: 50%;
+  width: 70%;
+  background-color: @bg-alt;
+
 }
 
 element {
-    width: 20px;       /* Breite der Einträge auf 150 Pixel begrenzen */
-    padding: 5px;       /* Innenabstand um jeden Eintrag */
+    width: 100px;       /* Breite der Einträge auf 150 Pixel begrenzen */
+    padding: 1px;       /* Innenabstand um jeden Eintrag */
 }
 
 element selected {
@@ -67,7 +69,7 @@ entry {
 }
 
 element {
-    width: 20px;       /* Breite der Einträge auf 150 Pixel begrenzen */
+    width: 400px;       /* Breite der Einträge auf 150 Pixel begrenzen */
     padding: 1px;       /* Innenabstand um jeden Eintrag */
 }
 
@@ -75,4 +77,3 @@ element {
     width: 200px;       /* Breite der Texte explizit begrenzen */
     horizontal-align: 0; /* Linksbündig */
 }
-
