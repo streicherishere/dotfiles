@@ -24,6 +24,9 @@ vim.opt.wrap = true -- automatically wraps at the window edge based on textwidth
 vim.opt.colorcolumn = "80"
 vim.opt.smartindent = true
 
+vim.opt.spell = true
+vim.opt.spelllang = { 'de', 'en' }
+
 -- for filetypes
 vim.cmd("autocmd BufEnter,BufRead,BufNewFile *.sh setlocal tabstop=4 softtabstop=4 shiftwidth=4")
 vim.cmd("autocmd BufEnter,BufRead,BufNewFile *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4")

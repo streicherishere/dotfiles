@@ -216,11 +216,17 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+bindsym $mod+Shift+m systemctl --user stop auto-mute.service
+
 bindsym $mod1+0 exec ~/scripts/bin/rofi-master.sh
+bindsym $mod1+b exec firefox
+bindsym $mod1+Shift+b exec firefox -p privat
+bindsym $mod1+Shift+q exec "qutebrowser --qt-flag disable-features=PermissionElement"
+
 
 bindsym $mod1+h exec ~/scripts/bin/hosts_selector.sh
 bindsym $mod1+p exec rofi-pass
-bindsym $mod1+b exec rofi-rbw
+bindsym $mod1+Shift+p exec rofi-rbw
 bindsym $mod1+c exec --no-startup-id ~/scripts/bin/commands.sh
 bindsym $mod1+q exec --no-startup-id ~/scripts/clipmenu/clipmenu-clipboard.sh
 
@@ -234,9 +240,10 @@ bindsym $mod+Shift+z exec ~/scripts/bin/split-screen-stop.sh
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
 bindsym $mod+Shift+P exec ~/scripts/bin/slack-status.sh
+bindsym $mod1+m exec --no-startup-id ~/scripts/rofi/rofi-finder.sh
 
 # clipboard sync
-exec_always --no-startup-id sh -c 'pgrep -x autocutsel > /dev/null || autocutsel -selection CLIPBOARD'
+exec_always --no-startup-id sh -c 'pgrep -x autocutsel > /dev/null || autocutsel'
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -272,9 +279,11 @@ exec_always --no-startup-id unclutter -idle 0.01 -root
 # exec_always ~/scripts/clipmenu/clipmenud-primary.sh
 exec_always --no-startup-id ~/scripts/clipmenu/clipmenud-clipboard.sh
 
+exec --no-startup-id owncloud
 # warpd
 # exec --no-startup-id warpd
 # exec --no-startup-id deja-dup --backup
 #
 # bindsym $mod+x exec warpd --hint
 # bindsym $mod+z exec warpd --normal
+

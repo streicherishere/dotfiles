@@ -1,79 +1,123 @@
-configuration{
+/*
+ * ==================================================================================
+ * FZF-inspiriertes Rofi-Theme (Fokus auf Lesbarkeit)
+ * ==================================================================================
+ */
+
+
+configuration {
+    /* Deine persönlichen Einstellungen bleiben gleich */
     modi: "run,window,combi";
     show-icons: false;
     terminal: "alacritty";
-    drun-display-format: "{icon} {name}";
+    drun-display-format: "{name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-combi: "All ";
-    display-run: "Run ";
-    display-window: "Window";
+    display-combi: "";
+    display-run: "";
+    display-window: "";
     sidebar-mode: false;
+
+    /* Vim-ähnliche Keybindings */
     kb-remove-to-eol: "Control+Shift+y";
     kb-row-up: "Up,Control+k";
     kb-row-down: "Down,Control+j";
     kb-accept-entry: "Control+m,Return,KP_Enter";
-    kb-screenshot: "Control+s";
 }
 
 @theme "/dev/null"
 
+/*
+ * ==================================================================================
+ * Globales Farbschema und Schriftart (aus alacritty.toml)
+ * ==================================================================================
+ */
 * {
-  bg: #FFFFFF;
-  bg-alt: #444b6a;
+    /* Farben aus deinem Alacritty Nord Theme */
+    bg:           #21252B; /* primary.background (dunkler gemacht) */
+    fg:           #a5abb6; /* dim_foreground */
+    selected-fg:  #e5e9f0; /* normal.white */
+    red:          #bf616a; /* normal.red */
+    yellow:       #ebcb8b; /* normal.yellow */
+    border-col:   #4c566a; /* selection.background */
 
-  fg: #000060;
-  fg-alt: #787c99;
+    /* Grundeinstellungen */
+    background-color:  transparent;
+    text-color:        @fg;
+    font:              "monospace 13";
+    border:            0;
+    margin:            0;
+    padding:           0;
+    spacing:           0;
 
-  background-color: @bg;
-
-  border: 2;
-  margin: 0;
-  padding: 2;
-  spacing: 0;
+    /* Markiert den übereinstimmenden Text in Gelb */
+    highlight:          @yellow;
 }
+
+/*
+ * ==================================================================================
+ * Layout-Styling
+ * ==================================================================================
+ */
 
 window {
-  width: 70%;
-  background-color: @bg-alt;
-
+    background-color:  @bg;
+    width:             50%;
+    border:            1px;
+    border-color:      @border-col;
+    padding:           0.2em;
 }
 
-element {
-    width: 100px;       /* Breite der Einträge auf 150 Pixel begrenzen */
-    padding: 1px;       /* Innenabstand um jeden Eintrag */
-}
-
-element selected {
-  background-color: @bg-alt;
-  text-color: @bg;
-}
-
-element-text {
-  background-color: inherit;
-  text-color: inherit;
-  vertical-align: 0.0;
+mainbox {
+    children:          [ inputbar, listview ];
 }
 
 listview {
-    columns: 1;         /* Zwei Spalten */
-    fixed-columns: true; /* Spaltenanzahl bleibt immer gleich */
-    layout: vertical;   /* Elemente werden in Spalten vertikal gestapelt */
+    columns:           1;
+    lines:             20;
+    layout:            vertical;
+    fixed-height:      false;
+    spacing:           1px;
+}
+
+/*
+ * ==================================================================================
+ * Element-Styling
+ * ==================================================================================
+ */
+
+inputbar {
+    padding:           8px 12px;
+    spacing:           10px;
+    children:          [ prompt, entry ];
+    margin:            0 0 5px 0; /* Kleiner Abstand unter der Eingabezeile */
+}
+
+prompt {
+    text-color:        @fg;
 }
 
 entry {
-  background-color: @bg-alt;
-  padding: 0;
-  text-color: @bg;
+    placeholder:       "Search...";
+    text-color:        @yellow; /* Der eingegebene Text ist gelb */
 }
 
 element {
-    width: 400px;       /* Breite der Einträge auf 150 Pixel begrenzen */
-    padding: 1px;       /* Innenabstand um jeden Eintrag */
+    padding:           2px 10px;
 }
 
-#textbox {
-    width: 200px;       /* Breite der Texte explizit begrenzen */
-    horizontal-align: 0; /* Linksbündig */
+element-text {
+    background-color:  inherit;
+    text-color:        inherit;
+    vertical-align:    0.3;
+}
+
+element selected {
+    background-color:  @bg;
+    text-color:        @selected-fg;
+    font:              "monospace 13 bold"; /* NEU: Macht den Text fett */
+    /* Roter Balken links */
+    border:            0px 0px 0px 3px;
+    border-color:      @red;
 }

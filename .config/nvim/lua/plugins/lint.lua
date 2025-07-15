@@ -23,7 +23,7 @@ return {
 			-- 			end)
 
 			lint.linters_by_ft = {
-				markdown = { "markdownlint" },
+				markdown = { "codespell" },
 				dockerfile = { "hadolint" },
 				go = { "golangcilint" },
 				-- lua = { "selene" },
@@ -34,6 +34,7 @@ return {
 				python = { "ruff" },
 				htmldjango = { "djlint" },
 				html = { "djlint" },
+        text = { "codespell" },
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

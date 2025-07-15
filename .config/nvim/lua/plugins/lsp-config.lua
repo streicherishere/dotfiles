@@ -23,6 +23,7 @@ return {
 				"dockerls",
 				"marksman",
 				"jinja_lsp",
+        "ltex",
 			},
 		},
 	},
@@ -56,6 +57,7 @@ return {
 					"yamlfmt", -- yaml
 					-- # dap
 					"bash-debug-adapter", -- bash
+          "ltex",
 				},
 			})
 		end,
@@ -143,6 +145,15 @@ return {
 			})
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.ltex.setup({
+				capabilities = capabilities,
+        settings = {
+          ltex = {
+            language = "en-GB",
+          },
+        },
+
 			})
 			local opts = { noremap = true, silent = true }
 

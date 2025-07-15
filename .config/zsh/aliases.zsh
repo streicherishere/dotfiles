@@ -10,6 +10,7 @@ alias hosts='cat /etc/hosts | grep -v "^#" | tr " " "\n" | fzf | xclip'
 
 alias cal='open-calendar.sh'
 
+
 #alias
 alias lock="i3lock --color 000000"
 alias "la"="ls -lagh"

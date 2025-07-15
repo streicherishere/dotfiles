@@ -17,7 +17,7 @@ export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border
     --color=fg+:#ffffff,bg+:#0a0909,hl+:#99d94c \
     --color=info:#e3ba62,prompt:#b6d5f5,pointer:#ff0000 \
     --color=marker:#ffffff,spinner:#ffe100,header:#ffe100 \
-    --border=double
+    --border=double --exact
       "
 
 
