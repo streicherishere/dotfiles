@@ -219,18 +219,18 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Shift+m systemctl --user stop auto-mute.service
 
 bindsym $mod1+0 exec ~/scripts/bin/rofi-master.sh
+bindsym $mod1+2 exec ~/scripts/bin/hosts_selector.sh
 bindsym $mod1+b exec firefox
 bindsym $mod1+Shift+b exec firefox -p privat
 bindsym $mod1+Shift+q exec "qutebrowser --qt-flag disable-features=PermissionElement"
 
 
-bindsym $mod1+h exec ~/scripts/bin/hosts_selector.sh
 bindsym $mod1+p exec rofi-pass
 bindsym $mod1+Shift+p exec rofi-rbw
 bindsym $mod1+c exec --no-startup-id ~/scripts/bin/commands.sh
 bindsym $mod1+q exec --no-startup-id ~/scripts/clipmenu/clipmenu-clipboard.sh
 
-bindsym $mod1+l exec ~/scripts/bin/slack-status.sh
+bindsym $mod1+8 exec ~/scripts/bin/slack-status.sh
 
 bindsym $mod+Shift+x exec ~/scripts/bin/split-screen.sh
 bindsym $mod+Shift+z exec ~/scripts/bin/split-screen-stop.sh
@@ -239,8 +239,7 @@ bindsym $mod+Shift+z exec ~/scripts/bin/split-screen-stop.sh
 ## Clipboard Screenshots
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
-bindsym $mod+Shift+P exec ~/scripts/bin/slack-status.sh
-bindsym $mod1+m exec --no-startup-id ~/scripts/rofi/rofi-finder.sh
+bindsym $mod1+9 exec --no-startup-id ~/scripts/rofi/rofi-finder.sh
 
 # clipboard sync
 exec_always --no-startup-id sh -c 'pgrep -x autocutsel > /dev/null || autocutsel'
