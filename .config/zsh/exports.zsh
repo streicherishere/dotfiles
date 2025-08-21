@@ -4,6 +4,8 @@ export PATH="$HOME/.bin:${PATH}"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
