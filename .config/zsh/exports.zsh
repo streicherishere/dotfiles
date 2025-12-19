@@ -6,8 +6,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{.git,node_modules}/*"'
@@ -21,7 +19,6 @@ export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border
     --color=marker:#ffffff,spinner:#ffe100,header:#ffe100 \
     --border=double --exact
       "
-
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true pass fzf
@@ -42,11 +39,20 @@ HISTFILE=~/.zsh_history  # Use a shared history file
 HISTSIZE=10000           # Set the maximum number of commands to remember
 SAVEHIST=10000
 
-# nvim
-#export GITLAB_TOKEN=$(pass work/gitlab/personal-access-token | head -1)
-export GITLAB_URL="https://gitlab.in2code.de"
 export BROWSER=firefox
 
 export CM_SELECTIONS=primary
 export CM_DIR=$HOME/.cache/clipmenu_primary
+
+# FZF-Tab configuration
+# Disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# Set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# Set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# Switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
