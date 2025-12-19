@@ -1,1 +1,6 @@
-.config/zsh/privat_aliases.zsh
+.config/zsh/privat.zsh
+.config/zsh/work.zsh
+*.local
+*.local.zsh
+.config/zsh/local/
+.config/tmux/local/

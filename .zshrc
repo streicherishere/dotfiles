@@ -5,19 +5,16 @@
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-#plug "zettlrobert/simple-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/vim"
 plug "zsh-history-substring-search"
-plug "ap-zsh/supercharge"
-plug "zap-zsh/exa"
 plug "kutsan/zsh-system-clipboard"
+plug "Aloxaf/fzf-tab"
 
-# Example sourcing of local files
-plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/privat_aliases.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
-
+# Load modular configs
+source "$HOME/.config/zsh/exports.zsh"
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/local/work.zsh"
 
 fpath=(~/.zsh.d/ $fpath)
 # Load and initialise completion system
@@ -33,8 +30,8 @@ setopt prompt_subst
 
 # Function to get the current Git branch name.
 function git_branch_name() {
-  # Get the current Git branch name.
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  # Get the current Git branch name (full path).
+  branch=$(git symbolic-ref --short HEAD 2> /dev/null)
 
   # If a branch name is found, format it for display.
   if [[ -n $branch ]]; then
