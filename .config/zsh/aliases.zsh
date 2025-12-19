@@ -13,8 +13,10 @@ alias cal='open-calendar.sh'
 
 #alias
 alias lock="i3lock --color 000000"
-alias "la"="ls -lagh"
-alias "ll"="ls -lgh"
+alias "la"="eza -lagh --icons --git"
+alias "ll"="eza -lgh --icons --git"
+alias "ls"="eza --icons"
+alias "tree"="eza --tree --icons"
 alias "diff"="delta"
 
 alias mem='ps -eo pid,ppid,cmd,comm,%mem,%cpu --sort=-%mem | head -20'
