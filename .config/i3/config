@@ -180,8 +180,8 @@ bindsym $mod1+0 exec ~/scripts/bin/rofi-master.sh
 bindsym $mod1+2 exec ~/scripts/bin/hosts_selector.sh
 bindsym $mod1+8 exec ~/scripts/bin/slack-status.sh
 bindsym $mod1+9 exec --no-startup-id ~/scripts/rofi/rofi-finder.sh
-bindsym $mod1+b exec firefox
-bindsym $mod1+Shift+b exec firefox -p privat
+bindsym $mod1+b exec librewolf
+bindsym $mod1+Shift+b exec librewolf -p privat
 bindsym $mod1+Shift+q exec "qutebrowser --qt-flag disable-features=PermissionElement"
 bindsym $mod1+p exec rofi-pass
 bindsym $mod1+Shift+p exec rofi-rbw

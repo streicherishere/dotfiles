@@ -39,7 +39,7 @@ HISTFILE=~/.zsh_history  # Use a shared history file
 HISTSIZE=10000           # Set the maximum number of commands to remember
 SAVEHIST=10000
 
-export BROWSER=firefox
+export BROWSER=librewolf
 
 export CM_SELECTIONS=primary
 export CM_DIR=$HOME/.cache/clipmenu_primary
